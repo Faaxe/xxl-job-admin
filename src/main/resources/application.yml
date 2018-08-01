@@ -1,0 +1,64 @@
+# server
+server:
+  port: 8080
+  context-path: /xxl-job-admin
+
+# spring
+spring:
+  application:
+    name: xxl-job-admin
+  datasource:
+    name: dataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    # basic config
+    url: jdbc:mysql://localhost:3306/xxl-job?useUnicode=true&characterEncoding=UTF8
+    username: root
+    password: root
+  # freemarker template
+  freemarker:
+    suffix: .ftl
+    content-type: text/html
+    charset: UTF-8
+    expose-session-attributes: true
+    expose-spring-macro-helpers: true
+    expose-request-attributes: true
+    request-context-attribute: request
+    cache: true
+    settings:
+      template_update_delay: 0
+      default_encoding: UTF-8
+      output_encoding: UTF-8
+      locale: zh_CN
+      number_format: 0.##########
+      date_format: yyyy-MM-dd
+      time_format: HH:mm:ss
+      datetime_format: yyyy-MM-dd HH:mm:s
+      classic_compatible: true
+      template_exception_handler: ignore
+
+# mybatis
+mybatis:
+  mapper-locations: classpath:mybatis-mapper/*.xml
+# quartz
+quartz:
+  configLocation: quartz.properties
+
+# xxl-job-admin
+### xxl-job email
+xxl.job:
+  mail:
+    host: smtp.163.com
+    port: 25
+    ssl: false
+    username: ovono802302@163.com
+    password: asdfzxcv
+    sendNick: 《xxl-job-admin》
+  ### xxl-job login
+  login:
+    username: admin
+    password: 123456
+  ### xxl-job, access token
+  accessToken:
+  ### xxl-job, i18n (default empty as chinese, "en" as english)
+  i18n:
