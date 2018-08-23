@@ -139,6 +139,27 @@
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>static/adminlte/dist/css/google-local/fonts/**</exclude>
+					<exclude>static/plugins/font-awesome-4.5.0/fonts/**</exclude>
+					<exclude>static/plugins/ionicons-2.0.1/fonts/**</exclude>
+				</excludes>
+			</resource>
+			<!-- maven的resource插件开启filtering功能后，会破坏有二进制内容的文件 -->
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>static/adminlte/dist/css/google-local/fonts/**</include>
+					<include>static/plugins/font-awesome-4.5.0/fonts/**</include>
+					<include>static/plugins/ionicons-2.0.1/fonts/**</include>
+				</includes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
