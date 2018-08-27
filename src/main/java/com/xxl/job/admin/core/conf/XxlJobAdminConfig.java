@@ -1,7 +1,9 @@
 package com.xxl.job.admin.core.conf;
 
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -10,7 +12,12 @@ import org.springframework.context.annotation.Configuration;
  * @author xuxueli 2017-04-28
  */
 @Configuration
+@EnableConfigurationProperties(XxlJobAdminProperties.class)
 public class XxlJobAdminConfig implements InitializingBean {
+
+    @Autowired
+    private XxlJobAdminProperties xxlJobAdminProperties;
+
     private static XxlJobAdminConfig adminConfig = null;
     public static XxlJobAdminConfig getAdminConfig() {
         return adminConfig;
@@ -21,68 +28,40 @@ public class XxlJobAdminConfig implements InitializingBean {
         adminConfig = this;
     }
 
-    @Value("${xxl.job.mail.host}")
-    private String mailHost;
-
-    @Value("${xxl.job.mail.port}")
-    private String mailPort;
-
-    @Value("${xxl.job.mail.ssl}")
-    private boolean mailSSL;
-
-    @Value("${xxl.job.mail.username}")
-    private String mailUsername;
-
-    @Value("${xxl.job.mail.password}")
-    private String mailPassword;
-
-    @Value("${xxl.job.mail.sendNick}")
-    private String mailSendNick;
-
-    @Value("${xxl.job.login.username}")
-    private String loginUsername;
-
-    @Value("${xxl.job.login.password}")
-    private String loginPassword;
-
-    @Value("${xxl.job.i18n}")
-    private String i18n;
-
-
     public String getMailHost() {
-        return mailHost;
+        return xxlJobAdminProperties.getMailHost();
     }
 
     public String getMailPort() {
-        return mailPort;
+        return xxlJobAdminProperties.getMailPort();
     }
 
     public boolean isMailSSL() {
-        return mailSSL;
+        return xxlJobAdminProperties.getMailSsl();
     }
 
     public String getMailUsername() {
-        return mailUsername;
+        return xxlJobAdminProperties.getMailUsername();
     }
 
     public String getMailPassword() {
-        return mailPassword;
+        return xxlJobAdminProperties.getMailPassword();
     }
 
     public String getMailSendNick() {
-        return mailSendNick;
+        return xxlJobAdminProperties.getMailSendNick();
     }
 
     public String getLoginUsername() {
-        return loginUsername;
+        return xxlJobAdminProperties.getLoginUsername();
     }
 
     public String getLoginPassword() {
-        return loginPassword;
+        return xxlJobAdminProperties.getLoginPassword();
     }
 
     public String getI18n() {
-        return i18n;
+        return xxlJobAdminProperties.getI18n();
     }
 
 }
